@@ -1,5 +1,5 @@
 {
-  "name": "Social Network API",
+  "name": "social-network-api",
   "version": "1.0.1",
   "description": "Mongoose back-end project - Main",
   "main": "index.js",
