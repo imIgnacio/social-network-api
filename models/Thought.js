@@ -19,18 +19,35 @@ const thoughtSchema = new Schema(
       required: true,
     },
     reactions: [{ type: Schema.Types.ObjectId, ref: "Reaction" }],
-  },
-  {
-    toJSON: {
-      virtuals: true,
-    },
-    id: false,
   }
 );
 
 thoughtSchema.virtual("reactionCount").get(function() {
   return this.reactions.length;
 });
+
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+      type: mongoose.Types.ObjectId(),
+      default: new mongoose.Types.ObjectId(),
+    },
+    reactionBody: {
+      type: String,
+      required: true,
+      maxlength: 280,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+      // Getter to format date timestamp TODO
+    },
+  },
+)
 
 const Thought = model('thought', thoughtSchema);
 
