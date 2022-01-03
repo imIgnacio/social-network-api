@@ -21,10 +21,10 @@ connection.once('open', async () => {
   for (let i = 0; i < 20; i++) {
     const username = usernames[i];
     const email = emails[i];
-    const thought = getRandomThought();
+    const thoughtText = getRandomThought();
 
     users.push({ username, email, });
-    thoughts.push({thought, username,});
+    thoughts.push({thoughtText, username,});
   }
 
   // Add users to the collection and await the results

@@ -51,6 +51,15 @@ module.exports = {
   },
   // Update a thought
   updateThought(req, res) {
-    return;
+    Thought.findOneAndUpdate({ _id: req.params.thoughtId }, { thoughtText: req.body.thoughtText, username: req.body.username }, { new: true })
+    .then((thought) => {
+      !thought
+        ? res.status(400).json({ message: 'No thought found' })
+        : res.status(200).json(thought)
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
   }
 };
