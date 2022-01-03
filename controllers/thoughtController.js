@@ -38,7 +38,16 @@ module.exports = {
   },
   // Delete a thought
   deleteThought(req, res) {
-    return;
+    Thought.findOneAndRemove({ _id: req.params.thoughtId })
+    .then((thought) =>
+      !thought
+        ? res.status(404).json({ message: 'No such thought exists' })
+        : res.status(200).json({ message: "Thought removed successfullly" })
+    )
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
   },
   // Update a thought
   updateThought(req, res) {
