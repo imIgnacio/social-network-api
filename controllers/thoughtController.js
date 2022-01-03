@@ -32,7 +32,9 @@ module.exports = {
   },
   // Create a thought
   createThought(req, res) {
-    return;
+    Thought.create(req.body)
+    .then((thought) => res.json(thought))
+    .catch((err) => res.status(500).json(err));
   },
   // Delete a thought
   deleteThought(req, res) {
