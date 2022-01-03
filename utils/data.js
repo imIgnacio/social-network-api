@@ -1,4 +1,4 @@
-const names = [
+const usernames = [
   'Aaran',
   'Aaren',
   'Aarez',
@@ -82,17 +82,57 @@ const emails = [
   'live@live.com',
   'test@test.com',
   'Mtest@admin.com',
+  'admin@admin.com',
+  'carlos@mail.com',
+  'peter@mail.com',
+  'work@mail.com',
+  'boss@mail.com',
+  'press@mail.com',
+  'bart@mail.com',
+  'Ziyaa@mail.com',
+  'Zohai@mail.com',
+  'Zouba@mail.com',
+  'Zubai@mail.com',
+  'Zubay@mail.com',
+  'Zurie@mail.com',
+  'Xande@mail.com',
+  'Jared@mail.com',
+  'Court@mail.com',
+  'Gilli@mail.com',
+  'Clark@mail.com',
+  'Jared@mail.com',
+  'Grace@mail.com',
 ];
+
+const thoughts = [
+  'Going to the beach',
+  'Waiting for holidays...',
+  'In classes...',
+  'Waiting for COVID to dissapear',
+  'All I want is a brand new car',
+  'I cannot wait to go to Australia',
+  'USA is the best country in the world',
+  'How do I tell my gf I want to break up?',
+  'Lorem10',
+  'I like robots',
+  'I hate birds',
+  'I cannot stand my boss',
+]
 
 // Get a random item given an array
 const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-// Gets a random full name
+// Gets a random name
 const getRandomUsername = () =>
-  `${getRandomArrItem(names)}`;
+  `${getRandomArrItem(usernames)}`;
 
+// Get a random email
 const getRandomEmail = () =>
   `${getRandomArrItem(emails)}`;
 
+// Get a random thought
+const getRandomThought = () =>
+  `${getRandomArrItem(thoughts)}`;
+
 // Export the functions for use in seed.js
-module.exports = { getRandomUsername, getRandomEmail };
+module.exports = { usernames, emails, getRandomThought };
