@@ -72,6 +72,11 @@ module.exports = {
   // Create a friend
   async createFriend(req, res){
     try{
+
+      if(req.params.userId === req.params.friendId){
+        return res.status(400).json({ message: 'You cannot add yourself as friend'});
+      }
+
       let user = await User.findOne({ _id: req.params.userId })
       let friend = await User.findOne({ _id: req.params.friendId })
 
@@ -79,8 +84,6 @@ module.exports = {
         return res.status(400).json({ message: 'No user found'});
       }else if(!friend){
         return res.status(400).json({ message: 'No friend to add found'});
-      }else if(req.params.userId == req.params.friendId){
-        return res.status(400).json({ message: 'You cannot add yourself as friend'}); //FIX
       }
 
       user.friends.push(friend);
@@ -93,7 +96,34 @@ module.exports = {
 
   },
   // Delete a friend
-  deleteFriend(req, res){
-    return res.json({ message: 'Test' });
+  async deleteFriend(req, res){
+    try{
+
+      if(req.params.userId === req.params.friendId){
+        return res.status(400).json({ message: 'You cannot delete yourself as friend'});
+      }
+
+      let user = await User.findOne({ _id: req.params.userId })
+      let friend = await User.findOne({ _id: req.params.friendId })
+
+      if(!user){
+        return res.status(400).json({ message: 'No user found'});
+      }else if(!friend){
+        return res.status(400).json({ message: 'No friend to add found'});
+      }
+
+      // Remove friend from friends list
+      const index = user.friends.indexOf(friend._id);
+      console.log(index);
+      if (index > -1) {
+        user.friends.splice(index, 1);
+      }
+
+      user.save();
+      return res.status(200).json(user);
+
+    }catch(err){
+      res.status(500).json(err);
+    }
   },
 };
