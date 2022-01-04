@@ -19,7 +19,7 @@ The user should clone the repository from GitHub. This application requires Expr
 Usage
 
 Use this api to set up a social network site.
-## Languages/Technology Used
+## Languages
 
 Express
 Node
