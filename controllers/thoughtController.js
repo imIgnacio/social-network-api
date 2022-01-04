@@ -31,10 +31,15 @@ module.exports = {
       });
   },
   // Create a thought
-  createThought(req, res) {
-    Thought.create(req.body)
-    .then((thought) => res.json(thought))
-    .catch((err) => res.status(500).json(err));
+  async createThought(req, res) {
+      try{
+        const thought = await Thought.create(req.body);
+        const user = await User.findOneAndUpdate({ _id: req.body.userId },{ $push: { thoughts: thought } },{ new: true });
+
+        res.status(200).json(thought);
+      }catch(err){
+          res.status(500).json(err);
+      }
   },
   // Delete a thought
   deleteThought(req, res) {
