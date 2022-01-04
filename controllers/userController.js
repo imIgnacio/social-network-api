@@ -114,7 +114,6 @@ module.exports = {
 
       // Remove friend from friends list
       const index = user.friends.indexOf(friend._id);
-      console.log(index);
       if (index > -1) {
         user.friends.splice(index, 1);
       }
