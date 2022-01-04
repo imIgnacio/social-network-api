@@ -66,5 +66,18 @@ module.exports = {
       console.log(err);
       res.status(500).json(err);
     });
+  },
+  // Create a reaction for a thought
+  createReaction(req, res) {  
+      
+    Thought.findOneAndUpdate( { _id: req.params.thoughtId }, { $push: { reactions: req.body } }, { new: true } )
+    .then((thought) => {
+        res.status(200).json(thought);
+    })
+    .catch(err => res.json(err));
+  },
+  // Delete a reation from a thought
+  deleteReaction(req, res) {
+    return;
   }
 };
