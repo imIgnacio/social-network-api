@@ -1,9 +1,9 @@
 # NoSQL: Social Network API
 # Table of Contents
 
-    - [Description](#Description)
-    - [Demo](#Demo)
-    - [Languages](#Languages)
+- [Description](#Description)
+- [Demo](#Demo)
+- [Languages](#Languages)
 
 ## Description
 
