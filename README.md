@@ -21,10 +21,10 @@ Usage
 Use this api to set up a social network site.
 ## Languages
 
--Express
--Node
--MongoDB
--Mongoose
--Javascript
+- Express
+- Node
+- MongoDB
+- Mongoose
+- Javascript
 
 If you have any questions about the project, contact us at: https://github.com/imIgnacio
